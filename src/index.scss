@@ -1,5 +1,7 @@
 @import "./scss/variables";
 @import "./scss/elements";
+@import "./scss/messages";
+@import "./scss/forms";
 
 body {
   font-size: 18px;
@@ -14,4 +16,7 @@ body {
   margin-inline-end: 0;
 }
 
-
+.umbre-background {
+  background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
+  height: 55vh;
+}

@@ -88,3 +88,18 @@
     transform: rotate(360deg);
   }
 }
+
+input {
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  display: block;
+  padding: .625rem .75rem;
+  transition: all .15s cubic-bezier(.68,-.55,.265,1.55);
+  color: #8898aa;
+  border: 1px solid #dee2e6;
+  border-radius: .25rem;
+  background-color: #fff;
+  background-clip: padding-box;
+  //box-shadow: 0 3px 2px rgb(233 236 239 / 5%);
+}
