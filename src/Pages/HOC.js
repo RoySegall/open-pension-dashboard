@@ -5,11 +5,5 @@ import Login from "./Login";
 export default () => {
   const {token, user} = useRecoilValue(auth);
 
-  if (!token) {
-    return <Login />
-  }
-
-  return <>
-    {user.username}
-  </>
+  return <Login />
 };

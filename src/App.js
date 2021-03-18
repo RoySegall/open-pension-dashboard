@@ -1,7 +1,7 @@
 import {
   RecoilRoot,
 } from 'recoil';
-import HOC from "./componenets/HOC";
+import HOC from "./Pages/HOC";
 
 function App() {
   return (
