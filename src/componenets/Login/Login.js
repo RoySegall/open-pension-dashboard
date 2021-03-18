@@ -1,15 +1,24 @@
 import {useState} from 'react';
 import './Login.scss';
+import {Redirect} from "react-router-dom";
 
 export default () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [redirectToHome, setRedirectToHome] = useState(false);
+
+  if (redirectToHome) {
+    return <Redirect to={"/home"} />
+  }
 
   const handleClick = () => {
     setIsLoading(true);
 
-    setTimeout(() => {setIsLoading(false)}, 3000);
+    setTimeout(() => {
+      setIsLoading(false);
+      setRedirectToHome(true);
+    }, 3000);
   }
 
   return <div className="login-wrapper">
