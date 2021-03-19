@@ -2,6 +2,7 @@
 @import "./scss/elements";
 @import "./scss/messages";
 @import "./scss/forms";
+@import "./scss/gradient";
 
 body {
   font-size: 18px;
@@ -17,7 +18,6 @@ body {
 }
 
 .umbre-background {
-  //background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
-  background: linear-gradient(87deg, var(--light-purple) 0, var(--blue) 100%) !important;
-  min-height: 55vh;
+  background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
+  //background: linear-gradient(87deg, var(--light-purple) 0, var(--blue) 50%) !important;
 }
