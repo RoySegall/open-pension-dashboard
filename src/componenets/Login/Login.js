@@ -33,7 +33,10 @@ export default () => {
       <small className="title">Login</small>
 
       <div className="inputs">
+        <label>Email</label>
         <input type="text" id="username" className="email" placeholder="Enter email" onChange={(e) => {setUsername(e.target.value)}} />
+
+        <label>Password</label>
         <input type="password" id="username" className="password"  placeholder="Enter password" onChange={(e) => {setPassword(e.target.value)}} />
       </div>
 

@@ -37,6 +37,12 @@
     .inputs {
       width: 75%;
 
+      label {
+        padding-bottom: 1em;
+        padding-top: 1em;
+        display: block;
+        color: var(--blue)
+      }
       input {
         margin-bottom: .25em;
         width: 100%;
