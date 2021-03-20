@@ -4,6 +4,7 @@ import "./Home.scss";
 import RoundedElement from "../../componenets/RoundedElement/RoundedElement";
 import Table from "../../componenets/Table/Table";
 import Status from "../../componenets/Status/Status";
+import Pager from "../../componenets/Pager/Pager.js"
 
 const TopContent = () => {
   return <div className="stats-wrapper">
@@ -47,7 +48,7 @@ export default () => {
           ['foo.png', <Status status='info'>Stored</Status>, '1234'],
         ]}
         navigationButton={"/files/uploaded"}
-        pager={{baseRoute: "/files", pages: 12}}
+        pager={<Pager />}
       >
       </Table>
     </RoundedElement>

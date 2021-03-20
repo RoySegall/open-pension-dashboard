@@ -1,5 +1,5 @@
 import "./Table.scss"
-export default ({title, headers, rows, navigationButton}) => {
+export default ({title, headers, rows, navigationButton, pager}) => {
 
   return <section className="table">
 
@@ -26,5 +26,8 @@ export default ({title, headers, rows, navigationButton}) => {
         </tr>)}
       </tbody>
     </table>
+    {pager && <section className="bottom">
+      {pager}
+    </section>}
   </section>
 };
