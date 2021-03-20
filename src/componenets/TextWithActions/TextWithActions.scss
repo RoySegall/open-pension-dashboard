@@ -3,24 +3,32 @@
   flex-direction: row;
   justify-content: space-between;
   padding-right: 1.25em;
+  align-items: center;
 
   .actions-wrapper {
     position: relative;
+    padding: .5em;
+    border: solid 1px white;
 
     .title {
-      text-decoration: underline;
+      .svg-inline--fa {
+        padding-left: .25em;
+        color: #7e8db6;
+      }
     }
 
     .menu {
       position: absolute;
+      left: -1px;
     }
 
     ul {
+      margin-top: .5em;
       padding: 0;
-      margin-top: .25em;
-      border: solid 1px #fafafa;
-      z-index: 1;
-      box-shadow: 0 4px 6px #32325d1c, 0 1px 3px #00000014;
+      padding-top: .25em;
+      border: solid 1px #efefef;
+      border-top: solid 1px white;
+      z-index: 2;
       display: none;
 
       li {
@@ -46,6 +54,8 @@
     }
 
     &:hover {
+      border: solid 1px #efefef;
+
       ul {
         display: block;
       }

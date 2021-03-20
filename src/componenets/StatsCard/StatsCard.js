@@ -1,5 +1,5 @@
 import "./StatsCard.scss"
-export default ({title, mainStat, gradColor = 'green'}) => {
+export default ({title, mainStat, gradColor = 'green', icon}) => {
   return <div className="card">
 
     <section className="upper">
@@ -10,7 +10,7 @@ export default ({title, mainStat, gradColor = 'green'}) => {
       </section>
 
       <div className={`icon bg-gradient-${gradColor}`}>
-        !
+        {icon}
       </div>
 
     </section>

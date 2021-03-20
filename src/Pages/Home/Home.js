@@ -6,6 +6,7 @@ import Table from "../../componenets/Table/Table";
 import Status from "../../componenets/Status/Status";
 import Pager from "../../componenets/Pager/Pager.js"
 import TextWithActions from "../../componenets/TextWithActions/TextWithActions";
+import {File, Database, Clock, Tasks} from "../../Icons/Icons";
 
 const TopContent = () => {
   return <div className="stats-wrapper">
@@ -13,24 +14,28 @@ const TopContent = () => {
       title="Uploaded files"
       mainStat="120"
       gradColor="orange"
+      icon={<File />}
     />
 
     <StatsCard
       title="Data amount"
       mainStat="1GB"
       gradColor="red"
+      icon={<Database />}
     />
 
     <StatsCard
       title="Files in queue"
       mainStat="100"
       gradColor="teal"
+      icon={<Clock />}
     />
 
     <StatsCard
       title="Files to approve"
       mainStat="21"
       gradColor="green"
+      icon={<Tasks />}
     />
   </div>
 }

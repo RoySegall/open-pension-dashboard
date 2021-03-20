@@ -1,9 +1,10 @@
 import "./TextWithActions.scss"
+import {CircleArrowDown} from "../../Icons/Icons";
 
 export default ({children, actions}) => <div className="text-with-actions">
   <span>{children}</span>
   <div className="actions-wrapper">
-    <span className="title">Actions</span>
+    <span className="title">Actions <CircleArrowDown /></span>
 
     <div className="menu">
       <ul>
