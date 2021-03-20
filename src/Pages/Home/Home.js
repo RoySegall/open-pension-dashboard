@@ -3,6 +3,7 @@ import StatsCard from "../../componenets/StatsCard/StatsCard";
 import "./Home.scss";
 import RoundedElement from "../../componenets/RoundedElement/RoundedElement";
 import Table from "../../componenets/Table/Table";
+import Status from "../../componenets/Status/Status";
 
 const TopContent = () => {
   return <div className="stats-wrapper">
@@ -40,7 +41,10 @@ export default () => {
         title="Recent uploaded files"
         headers={['Filename', 'Status', 'Storage ID']}
         rows={[
-          ['foo.png', 'Stored', '1234']
+          ['foo.png', <Status status='ok'>Processed</Status>, '1234'],
+          ['foo.png', <Status status='error'>Failed</Status>, '1234'],
+          ['foo.png', <Status status='warning'>Processes with errors</Status>, '1234'],
+          ['foo.png', <Status status='info'>Stored</Status>, '1234'],
         ]}
         navigationButton={"/files/uploaded"}
         pager={{baseRoute: "/files", pages: 12}}
