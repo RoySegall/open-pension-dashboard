@@ -23,12 +23,12 @@ export const Section = ({title, children}) => {
   </section>
 }
 
-export const Input = ({title, type= "text", error}) => {
+export const Input = ({title, type= "text", error, ...props}) => {
 
   return <div className="input-wrapper">
     <label>{title}</label>
 
-    <input type={type} className={`input ${error ? 'error' : ''}`} />
+    <input type={type} {...props} className={`input ${error && 'error'}`} />
     {error && <span className="input-error">{error}</span>}
   </div>
 }

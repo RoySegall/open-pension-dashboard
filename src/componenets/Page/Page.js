@@ -1,7 +1,11 @@
 import "./Page.scss"
 import {Charts, Copy, Home, Users} from "../../Icons/Icons";
 import {Link} from "react-router-dom";
+import {useRecoilValue} from "recoil";
+import {loggedInUserState} from "../../state/authState";
 export default ({title, children, topContent, activePage = "home"}) => {
+
+  const {name} = useRecoilValue(loggedInUserState);
 
   const menuItems = {
     home: {title: 'Home',  icon: <Home />, path: "/home"},
@@ -40,7 +44,7 @@ export default ({title, children, topContent, activePage = "home"}) => {
           <h1>{title}</h1>
 
           <div className="header-menu">
-            Welcome <b>user</b>. <a href={"#"}>Logout</a>
+            Welcome <b>{name}</b>. <a href={"#"}>Logout</a>
           </div>
 
         </div>

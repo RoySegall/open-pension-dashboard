@@ -1,5 +1,5 @@
 import {useRecoilValue} from "recoil";
-import {auth} from "../state/auth.js"
+import {authState} from "../state/authState.js"
 import Login from "./Login";
 import {
   Switch,
@@ -10,13 +10,13 @@ import Home from "./Home/Home";
 import Users from "./Users/Users";
 
 export default () => {
-  const {token, user} = useRecoilValue(auth);
+  const {token, user} = useRecoilValue(authState);
 
   return <Router>
     <Switch>
-      <Route path="/home"><Home /></Route>
-      <Route path="/users"><Users /></Route>
-      <Route path="/"><Login /></Route>
+      {token ? <>
+        <Route path="/home"><Home /></Route>
+        <Route path="/users"><Users /></Route></> : <Route path="/"><Login /></Route>}
     </Switch>
   </Router>
 };

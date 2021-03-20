@@ -41,7 +41,6 @@ const TopContent = () => {
 }
 
 export default () => {
-
   const editHandler = () => console.log('Edit');
 
   return <Page title={"Home"} topContent={<TopContent />}>
