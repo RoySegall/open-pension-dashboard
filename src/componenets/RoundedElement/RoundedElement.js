@@ -1,6 +1,6 @@
 import "./RoundedElement.scss"
-export default () => {
+export default ({children}) => {
   return <section className="rounded-table">
-    Testing
+    {children}
   </section>
 }

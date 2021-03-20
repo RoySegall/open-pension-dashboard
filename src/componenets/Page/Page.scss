@@ -42,7 +42,7 @@ main {
 
     .umbre-background {
       padding-top: .5em;
-      min-height: 25vh;
+      min-height: 30vh;
       padding-left: .25em;
       color: white;
       display: flex;
@@ -52,8 +52,8 @@ main {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-left: .75em;
-        margin-right: .75em;
+        margin-left: 1.5em;
+        margin-right: 1.5em;
 
         h1 {
           font-size: 2em;
@@ -67,14 +67,17 @@ main {
 
       .top-content {
         margin-top: auto;
-        margin-bottom: 1em;
+        margin-bottom: 5em;
+        margin-left: 1em;
+        margin-right: 1em;
       }
     }
   }
 
   .content {
-
     padding-left: .25em;
-    margin-top: -2.5em;
+    margin-top: -3em;
+    margin-left: 1.5em;
+    margin-right: 1.5em
   }
 }

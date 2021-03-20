@@ -6,7 +6,7 @@ import {
   Route,
   BrowserRouter as Router
 } from "react-router-dom";
-import Home from "./Home";
+import Home from "./Home/Home";
 
 export default () => {
   const {token, user} = useRecoilValue(auth);
