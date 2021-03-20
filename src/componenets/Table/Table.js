@@ -1,10 +1,17 @@
 import "./Table.scss"
-export default ({title, headers, rows}) => {
+export default ({title, headers, rows, navigationButton}) => {
 
   return <section className="table">
-    <span className="title">
-      {title}
-    </span>
+
+    <section className="top">
+      <span className="title">
+        {title}
+      </span>
+
+      {navigationButton && <div className="navigation-button-wrapper">
+        <button className="navigation-button">View all</button>
+      </div> }
+    </section>
 
     <table>
       <thead>

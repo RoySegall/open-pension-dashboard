@@ -42,6 +42,7 @@ export default () => {
         rows={[
           ['foo.png', 'Stored', '1234']
         ]}
+        navigationButton={"/files/uploaded"}
       >
       </Table>
     </RoundedElement>
