@@ -1,22 +1,27 @@
 .login-wrapper {
+  height: 100vh;
 
-  h1, p {
-    color: white;
-    text-align: center;
-    padding-top: .25em;
-  }
+  .umbre-background {
+    padding-bottom: 2em;
 
-  p {
-    padding-top: 1em;
+    h1, p {
+      color: white;
+      text-align: center;
+      padding-top: .25em;
+    }
+
+    p {
+      padding-top: 1em;
+    }
   }
 
   .login {
     padding: 5px;
-    width: 50vh;
-    min-height: 50vh;
+    width: 45vh;
+    min-height: 45vh;
     border: solid 1px var(--dark-purple);
     margin: auto;
-    margin-top: -15em;
+    margin-top: 5em;
     background: var(--background);
     border-radius: 0.2em;
     filter: drop-shadow(5px 5px 8px #4c4b4b);
