@@ -1,22 +1,29 @@
 import "./Page.scss"
-export default ({title, children, topContent}) => {
+import {Charts, Copy, Home, Users} from "../../Icons/Icons";
+export default ({title, children, topContent, activePage = "home"}) => {
+
+  const menuItems = {
+    home: {title: 'Home',  icon: <Home />},
+    users: {title: 'Users', icon: <Users />},
+    files: {title: 'Files', icon: <Copy />},
+    analytics: {title: 'Analytics', icon: <Charts />}
+  };
 
   return <main>
 
     <aside>
-
       <section className="title">
-        <h2>
-          Open Pension
-        </h2>
+        <h2>Open Pension</h2>
       </section>
 
       <nav>
-        <ul>
-          <li>Home</li>
-          <li>Users</li>
-          <li>Files</li>
-          <li>Analytics</li>
+        <ul className="side-menu">
+          {Object.entries(menuItems).map(([id, menuItem], key) => {
+            const {title, icon} = menuItem;
+            return <li className={`${id === activePage ? 'active' : ''}`}>
+              <span className={`icon-${id}`}>{icon}</span> {title}
+            </li>
+          })}
         </ul>
       </nav>
 

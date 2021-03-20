@@ -56,7 +56,30 @@ export default () => {
             <TextWithActions actions={[
               {title: 'Edit', handler: editHandler},
               {title: 'Delete', handler: editHandler},
-              ]}>1234</TextWithActions>
+            ]}>1234</TextWithActions>
+          ],
+          ['foo.png', <Status status='error'>Failed</Status>, '1234'],
+          ['foo.png', <Status status='warning'>Processes with errors</Status>, '1234'],
+          ['foo.png', <Status status='info'>Stored</Status>, '1234'],
+        ]}
+        navigationButton={"/files/uploaded"}
+        pager={<Pager />}
+      >
+      </Table>
+    </RoundedElement>
+
+    <RoundedElement>
+      <Table
+        title="Recent uploaded files"
+        headers={['Filename', 'Status', 'Storage ID']}
+        rows={[
+          [
+            'foo.png',
+            <Status status='ok'>Processed</Status>,
+            <TextWithActions actions={[
+              {title: 'Edit', handler: editHandler},
+              {title: 'Delete', handler: editHandler},
+            ]}>1234</TextWithActions>
           ],
           ['foo.png', <Status status='error'>Failed</Status>, '1234'],
           ['foo.png', <Status status='warning'>Processes with errors</Status>, '1234'],
