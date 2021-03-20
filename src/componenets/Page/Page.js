@@ -1,12 +1,13 @@
 import "./Page.scss"
 import {Charts, Copy, Home, Users} from "../../Icons/Icons";
+import {Link} from "react-router-dom";
 export default ({title, children, topContent, activePage = "home"}) => {
 
   const menuItems = {
-    home: {title: 'Home',  icon: <Home />},
-    users: {title: 'Users', icon: <Users />},
-    files: {title: 'Files', icon: <Copy />},
-    analytics: {title: 'Analytics', icon: <Charts />}
+    home: {title: 'Home',  icon: <Home />, path: "/home"},
+    users: {title: 'Users', icon: <Users />, path: "/users"},
+    files: {title: 'Files', icon: <Copy />, path: "/files"},
+    analytics: {title: 'Analytics', icon: <Charts />, path: "/analytics"}
   };
 
   return <main>
@@ -19,9 +20,12 @@ export default ({title, children, topContent, activePage = "home"}) => {
       <nav>
         <ul className="side-menu">
           {Object.entries(menuItems).map(([id, menuItem], key) => {
-            const {title, icon} = menuItem;
-            return <li className={`${id === activePage ? 'active' : ''}`}>
-              <span className={`icon-${id}`}>{icon}</span> {title}
+            const {title, icon, path} = menuItem;
+            return <li className={`${id === activePage ? 'active' : ''} link-wrapper`}>
+              <Link to={path}>
+                <span className={`icon icon-${id}`}>{icon}</span>
+                <div >{title}</div>
+              </Link>
             </li>
           })}
         </ul>
