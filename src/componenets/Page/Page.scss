@@ -5,17 +5,21 @@ main {
 
   aside {
     width: 15vw;
-    border-right: solid 1px var(--dark-purple);
+    background: white;
+    border-right: solid 1px #efefef;
+    box-shadow: 0 4px 6px #32325d1c, 0 1px 3px #00000014;
+    z-index: 2;
+
 
     .title {
-      padding-bottom: .5em;
+      padding-bottom: .75em;
       margin-bottom: .5em;
 
       h2 {
         text-align: center;
-        padding-top: .5em;
+        padding-top: .25em;
         font-size: 2em;
-        color: var(--blue)
+        color: var(--blue);
       }
     }
 
@@ -53,7 +57,7 @@ main {
         justify-content: space-between;
         padding-left: 1.5em;
         padding-right: 1.5em;
-        border-bottom: solid 1px #6b7de6;
+        border-bottom: solid 1px var(--header-border-bottom);
         padding-bottom: .75em;
 
         h1 {
