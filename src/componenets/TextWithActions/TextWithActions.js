@@ -4,7 +4,7 @@ import {CircleArrowDown} from "../../Icons/Icons";
 export default ({children, actions}) => <div className="text-with-actions">
   <span>{children}</span>
   <div className="actions-wrapper">
-    <span className="title">Actions <CircleArrowDown /></span>
+    <span className="action-title">Actions <CircleArrowDown /></span>
 
     <div className="menu">
       <ul>

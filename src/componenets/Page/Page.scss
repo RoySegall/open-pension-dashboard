@@ -112,6 +112,12 @@ main {
         .header-menu {
           font-size: 1.25em;
           font-weight: 300;
+
+          a {
+            color: inherit;
+            font-weight: 700;
+            text-decoration: none;
+          }
         }
       }
 

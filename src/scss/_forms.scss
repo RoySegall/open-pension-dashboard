@@ -5,6 +5,10 @@
   &:hover {
     background: var(--button-green);
   }
+
+  &.on-click {
+    border-left-color: var(--button-green);
+  }
 }
 
 .button-error {
@@ -13,6 +17,10 @@
 
   &:hover {
     background: var(--button-red);
+  }
+
+  &.on-click {
+    border-left-color: var(--button-red);
   }
 }
 
@@ -23,6 +31,10 @@
   &:hover {
     background: var(--buton-yellow);
   }
+
+  &.on-click {
+    border-left-color: var(--buton-yellow);
+  }
 }
 
 .button-info {
@@ -31,6 +43,10 @@
 
   &:hover {
     background: var(--buton-blue);
+  }
+
+  &.on-click {
+    border-left-color: var(--buton-blue);
   }
 }
 
@@ -101,5 +117,4 @@ input {
   border-radius: .25rem;
   background-color: #fff;
   background-clip: padding-box;
-  //box-shadow: 0 3px 2px rgb(233 236 239 / 5%);
 }

@@ -40,7 +40,7 @@ export default ({title, children, topContent, activePage = "home"}) => {
           <h1>{title}</h1>
 
           <div className="header-menu">
-            Welcome <b>user</b>
+            Welcome <b>user</b>. <a href={"#"}>Logout</a>
           </div>
 
         </div>
