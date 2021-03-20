@@ -43,6 +43,7 @@ export default () => {
           ['foo.png', 'Stored', '1234']
         ]}
         navigationButton={"/files/uploaded"}
+        pager={{baseRoute: "/files", pages: 12}}
       >
       </Table>
     </RoundedElement>
