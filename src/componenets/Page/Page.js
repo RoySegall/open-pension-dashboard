@@ -1,21 +1,9 @@
 import "./Page.scss"
 import {Charts, Copy, Home, Users} from "../../Icons/Icons";
-import {Link, Redirect} from "react-router-dom";
-import {useRecoilValue, useResetRecoilState} from "recoil";
-import {loggedInUserState, authState} from "../../state/authState";
+import {Link} from "react-router-dom";
+import Username from "../Username/Username";
+
 export default ({title, children, topContent, activePage = "home"}) => {
-
-  const user = useRecoilValue(loggedInUserState);
-  const resetUser = useResetRecoilState(authState);
-
-  if (!user) {
-    console.log('logout!');
-    resetUser();
-    localStorage.removeItem('token');
-    return <Redirect to={"/"} />;
-  }
-
-  const {name} = user;
 
   const menuItems = {
     home: {title: 'Home',  icon: <Home />, path: "/home"},
@@ -54,7 +42,7 @@ export default ({title, children, topContent, activePage = "home"}) => {
           <h1>{title}</h1>
 
           <div className="header-menu">
-            Welcome <b>{name}</b>. <a href={"#"}>Logout</a>
+            Welcome <Username />.
           </div>
 
         </div>

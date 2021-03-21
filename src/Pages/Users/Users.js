@@ -1,11 +1,7 @@
 import Page from "../../componenets/Page/Page";
 import {Button, Form, Input, Section} from "../../componenets/Form/Form";
-import {useRecoilValue} from "recoil";
-import {loggedInUserState} from "../../state/authState";
 
 export default () => {
-
-  const user = useRecoilValue(loggedInUserState);
 
   const actions = <>
     <Button type="ok">Submit</Button>

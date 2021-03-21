@@ -1,13 +1,14 @@
-import {
-  RecoilRoot,
-} from 'recoil';
+import {RecoilRoot,} from 'recoil';
+import React from 'react';
 import HOC from "./Pages/HOC";
 
 function App() {
   return (
     <div className="App">
       <RecoilRoot>
-        <HOC />
+        <React.Suspense fallback={<div>Loading...</div>}>
+          <HOC />
+        </React.Suspense>
       </RecoilRoot>
     </div>
   );

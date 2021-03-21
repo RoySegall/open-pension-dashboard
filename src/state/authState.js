@@ -1,4 +1,4 @@
-import {atom, selector, useSetRecoilState} from "recoil";
+import {atom, selector} from "recoil";
 import {isEmpty} from 'lodash';
 
 export const DummyLoginResults = {
@@ -18,12 +18,17 @@ export const authState = atom({
 
 export const loggedInUserState = selector({
   key: 'loggedInUserState',
-  get: ({get}) => {
+  get: async ({get}) => {
     const {user} = get(authState);
 
     if (isEmpty(user)) {
       console.log('Get user from server');
-      return DummyLoginResults.user;
+
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(DummyLoginResults.user);
+        }, 3000);
+      });
     }
 
     return user;
