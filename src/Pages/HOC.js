@@ -10,13 +10,16 @@ import Home from "./Home/Home";
 import Users from "./Users/Users";
 
 export default () => {
-  const {token} = useRecoilValue(authState);
+  const {token: tokenFromState} = useRecoilValue(authState);
+  const tokenFromStorage = localStorage.getItem('token');
+  const isAuth = tokenFromState || tokenFromStorage;
 
   return <Router>
     <Switch>
-      {token ? <>
-        <Route path="/home"><Home /></Route>
-        <Route path="/users"><Users /></Route></> : <Route path="/"><Login /></Route>}
+      {isAuth ? <>
+        <Route path="/users"><Users /></Route>
+        <Route path="/"><Home /></Route>
+      </> : <Route path="/"><Login /></Route>}
     </Switch>
   </Router>
 };

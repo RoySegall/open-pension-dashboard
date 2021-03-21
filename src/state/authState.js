@@ -1,4 +1,5 @@
-import {atom, selector} from "recoil";
+import {atom, selector, useSetRecoilState} from "recoil";
+import {isEmpty} from 'lodash';
 
 export const DummyLoginResults = {
   token: 'pizza',
@@ -19,6 +20,14 @@ export const loggedInUserState = selector({
   key: 'loggedInUserState',
   get: ({get}) => {
     const {user} = get(authState);
+
+    if (isEmpty(user)) {
+      console.log('Get user from server');
+      return DummyLoginResults.user;
+    }
+
     return user;
   },
 });
+
+export const logoutState = selector

@@ -1,11 +1,21 @@
 import "./Page.scss"
 import {Charts, Copy, Home, Users} from "../../Icons/Icons";
-import {Link} from "react-router-dom";
-import {useRecoilValue} from "recoil";
-import {loggedInUserState} from "../../state/authState";
+import {Link, Redirect} from "react-router-dom";
+import {useRecoilValue, useResetRecoilState} from "recoil";
+import {loggedInUserState, authState} from "../../state/authState";
 export default ({title, children, topContent, activePage = "home"}) => {
 
-  const {name} = useRecoilValue(loggedInUserState);
+  const user = useRecoilValue(loggedInUserState);
+  const resetUser = useResetRecoilState(authState);
+
+  if (!user) {
+    console.log('logout!');
+    resetUser();
+    localStorage.removeItem('token');
+    return <Redirect to={"/"} />;
+  }
+
+  const {name} = user;
 
   const menuItems = {
     home: {title: 'Home',  icon: <Home />, path: "/home"},

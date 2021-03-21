@@ -67,6 +67,8 @@ export default () => {
     try {
       const {token, expires, user} = await login({username, password});
 
+      localStorage.setItem('token', token);
+      localStorage.setItem('expires', expires);
       setAuthState(oldAuth => {
         return {
           ...oldAuth,
