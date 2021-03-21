@@ -1,5 +1,11 @@
 import {atom, selector} from "recoil";
 
+export const DummyLoginResults = {
+  token: 'pizza',
+  expires: new Date(),
+  user: {id: 1, name: 'admin', email: 'admin@admin.com'}
+};
+
 export const authState = atom({
   key: 'authState',
   default: {

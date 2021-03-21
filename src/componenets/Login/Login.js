@@ -4,14 +4,14 @@ import {Redirect} from "react-router-dom";
 import {Input} from "../Form/Form";
 import {isEmpty} from "lodash";
 import {useSetRecoilState} from "recoil";
-import {authState} from "../../state/authState";
+import {authState, DummyLoginResults} from "../../state/authState";
 
 const login = ({username, password}) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
 
       if (username === "admin" && password === "admin" ) {
-        resolve({id: 1, name: 'admin', email: 'admin@admin.com'});
+        resolve(DummyLoginResults);
       } else {
         reject({'error': 'Wrong username or password'});
       }
@@ -45,7 +45,7 @@ export default () => {
   const [isLoading, setIsLoading] = useState(false);
   const [redirectToHome, setRedirectToHome] = useState(false);
   const [error, setError] = useState('');
-  const setAuth = useSetRecoilState(authState);
+  const setAuthState = useSetRecoilState(authState);
 
   if (redirectToHome) {
     return <Redirect to={"/home"} />
@@ -65,13 +65,14 @@ export default () => {
     setIsLoading(true);
 
     try {
-      const results = await login({username, password});
+      const {token, expires, user} = await login({username, password});
 
-      setAuth(oldAuth => {
+      setAuthState(oldAuth => {
         return {
-          token: 'a',
-          expires: new Date(),
-          user: results,
+          ...oldAuth,
+          token,
+          expires,
+          user,
         };
       });
       setRedirectToHome(true);

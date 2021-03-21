@@ -10,7 +10,7 @@ import Home from "./Home/Home";
 import Users from "./Users/Users";
 
 export default () => {
-  const {token, user} = useRecoilValue(authState);
+  const {token} = useRecoilValue(authState);
 
   return <Router>
     <Switch>
