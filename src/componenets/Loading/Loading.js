@@ -14,6 +14,7 @@ const animate = async (box) => {
 
   await sleep(1);
   box.classList.remove('top');
+
   box.classList.add('right');
   await sleep(3);
   box.classList.remove('right');
@@ -24,15 +25,13 @@ const animate = async (box) => {
   box.classList.add('left');
   await sleep();
   box.classList.remove('left');
+
   await animate(box);
 }
 
 const boxEffect = async () => {
   const box = document.querySelector('.box');
-
-  // while (true) {
-    await animate(box);
-  // }
+  await animate(box);
 };
 
 export default () => {

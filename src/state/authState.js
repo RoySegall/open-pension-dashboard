@@ -1,5 +1,6 @@
 import {atom, selector} from "recoil";
 import {isEmpty} from 'lodash';
+import {me} from "./api";
 
 export const DummyLoginResults = {
   token: 'pizza',
@@ -22,15 +23,15 @@ export const loggedInUserState = selector({
     const {user} = get(authState);
 
     if (isEmpty(user)) {
-      console.log('Get user from server');
+      const {data, error} = await me();
+      debugger;
 
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve(DummyLoginResults.user);
-        }, 3000);
-      });
+      if (error) {
+        // truncate local storage and throw back to the front page.
+      }
+
+      return data;
     }
-
     return user;
   },
 });

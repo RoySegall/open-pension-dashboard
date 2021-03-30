@@ -1,34 +1,31 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import './Login.scss';
 import {Redirect} from "react-router-dom";
 import {Input} from "../Form/Form";
 import {isEmpty} from "lodash";
 import {useSetRecoilState} from "recoil";
-import {authState, DummyLoginResults} from "../../state/authState";
+import {authState} from "../../state/authState";
+import {loginQuery} from "../../state/api";
 
-const login = ({username, password}) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-
-      if (username === "admin" && password === "admin" ) {
-        resolve(DummyLoginResults);
-      } else {
-        reject({'error': 'Wrong username or password'});
-      }
-    }, 3000);
-  });
+const login = async ({usernameOrEmail, password}) => {
+  const key = usernameOrEmail.includes('@') ? 'email' : 'username';
+  const loginPayload = {
+    password,
+    [key]: usernameOrEmail
+  };
+  return loginQuery(loginPayload);
 }
 
-const validateForm = ({username, password, setErrors}) => {
-  if (isEmpty(username) || isEmpty(password)) {
+const validateForm = ({usernameOrEmail, password, setErrors}) => {
+  if (isEmpty(usernameOrEmail) || isEmpty(password)) {
     const errors = {};
 
-    if (isEmpty(username)) {
-      errors['username'] = 'Username cannot be empty';
+    if (isEmpty(usernameOrEmail)) {
+      errors['usernameOrEmailError'] = 'You need to set a username or email';
     }
 
     if (isEmpty(password)) {
-      errors['password'] = 'Password cannot be empty';
+      errors['passwordError'] = 'Password cannot be empty';
     }
 
     setErrors(errors);
@@ -39,7 +36,7 @@ const validateForm = ({username, password, setErrors}) => {
 }
 
 export default () => {
-  const [username, setUsername] = useState('');
+  const [usernameOrEmail, setUsernameOrEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -57,35 +54,36 @@ export default () => {
     setError('');
     setErrors({});
 
-    const isFormValid = validateForm({username, password, setErrors});
+    const isFormValid = validateForm({usernameOrEmail, password, setErrors});
     if (!isFormValid) {
       return;
     }
 
     setIsLoading(true);
+    const {data, error} = await login({usernameOrEmail, password});
 
-    try {
-      const {token, expires, user} = await login({username, password});
+    if (error) {
+      setError(error);
+    } else {
+      const {token, refreshToken, expires} = data;
 
       localStorage.setItem('token', token);
       localStorage.setItem('expires', expires);
+      localStorage.setItem('refreshToken', refreshToken);
       setAuthState(oldAuth => {
         return {
           ...oldAuth,
           token,
           expires,
-          user,
         };
       });
-      setRedirectToHome(true);
-    } catch (e) {
-      setError(e.error);
+      window.location.reload();
     }
 
     setIsLoading(false);
   }
 
-  const { username: usernameError, password: passwordError } = errors;
+  const { usernameOrEmailError, passwordError } = errors;
   return <div className="login-wrapper">
     <section className="umbre-background">
       <h1 className="h1">Welcome to Open Pension Dashboard</h1>
@@ -100,8 +98,8 @@ export default () => {
       {error && <div className="message error">{error}</div>}
 
       <div className="inputs">
-        <Input title={"Email"} type="text" id="username" className="email" placeholder="Enter email" onChange={(e) => {setUsername(e.target.value)}} error={usernameError} />
-        <Input title={"Password"} type="password" id="username" className="password"  placeholder="Enter password" onChange={(e) => {setPassword(e.target.value)}} error={passwordError} />
+        <Input title={"Email or Username"} type="text" id="username" className="email" placeholder="Enter email or username" onChange={(e) => {setUsernameOrEmail(e.target.value)}} error={usernameOrEmailError} />
+        <Input title={"Password"} type="password" id="password" className="password"  placeholder="Enter password" onChange={(e) => {setPassword(e.target.value)}} error={passwordError} />
       </div>
 
       <button className={`button button-ok ${isLoading ? 'on-click':''}`} onClick={() => handleClick()}>Login</button>

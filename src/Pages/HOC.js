@@ -13,7 +13,7 @@ export default () => {
   const {token: tokenFromState} = useRecoilValue(authState);
   const tokenFromStorage = localStorage.getItem('token');
   const isAuth = tokenFromState || tokenFromStorage;
-
+  // todo: use gurards routes.
   return <Router>
     <Switch>
       {isAuth ? <>
