@@ -13,7 +13,5 @@ export default () => {
     localStorage.removeItem('token');
   }
 
-  console.log(user);
-
   return <>{user.username}. <a href={"#"} onClick={(e) => {setLogout(true);}}>Logout</a></>
 };
