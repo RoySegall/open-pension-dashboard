@@ -33,4 +33,4 @@ export const Input = ({title, type= "text", error, ...props}) => {
   </div>
 }
 
-export const Button = ({children, type, waiting = false}) => <button className={`button button-${type} ${waiting ? 'on-click' : ''}`}>{children}</button>;
+export const Button = ({children, type, waiting = false, ...props}) => <button className={`button button-${type} ${waiting ? 'on-click' : ''}`} {...props}>{children}</button>;

@@ -6,7 +6,7 @@ import Username from "../Username/Username";
 export default ({title, children, topContent, activePage = "home"}) => {
 
   const menuItems = {
-    home: {title: 'Home',  icon: <Home />, path: "/home"},
+    home: {title: 'Home',  icon: <Home />, path: "/"},
     users: {title: 'Users', icon: <Users />, path: "/users"},
     files: {title: 'Files', icon: <Copy />, path: "/files"},
     analytics: {title: 'Analytics', icon: <Charts />, path: "/analytics"}

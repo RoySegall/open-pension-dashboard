@@ -24,7 +24,6 @@ export const loggedInUserState = selector({
 
     if (isEmpty(user)) {
       const {data, error} = await me();
-      debugger;
 
       if (error) {
         // truncate local storage and throw back to the front page.

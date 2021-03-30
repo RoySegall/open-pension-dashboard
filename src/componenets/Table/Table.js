@@ -1,5 +1,8 @@
 import "./Table.scss"
-export default ({title, headers, rows, navigationButton, pager}) => {
+import {isEmpty} from 'lodash';
+import {Link} from "react-router-dom";
+export default ({title, headers, rows, navigationButton, pager, emptyElement}) => {
+  const {path, text} = navigationButton;
 
   return <section className="table">
 
@@ -9,7 +12,7 @@ export default ({title, headers, rows, navigationButton, pager}) => {
       </span>
 
       {navigationButton && <div className="navigation-button-wrapper">
-        <button className="navigation-button">View all</button>
+        <Link to={path} className="navigation-button">{text}</Link>
       </div> }
     </section>
 
@@ -24,6 +27,9 @@ export default ({title, headers, rows, navigationButton, pager}) => {
         {rows.map((row, key) => <tr key={key}>
           {row.map((cell, key) => <td key={key}>{cell}</td>)}
         </tr>)}
+        {isEmpty(rows) && <tr><td className="empty-row" colSpan={5}>
+          {emptyElement}
+        </td></tr>}
       </tbody>
     </table>
     {pager && <section className="bottom">
